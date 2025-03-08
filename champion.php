@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détails du Champion</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        .champion-container {
+            max-width: 600px;
+            margin: auto;
+            text-align: center;
+        }
+        .champion-image {
+            width: 200px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="champion-name"></h1>
+    <div class="champion-container">
+        <img id="champion-image" class="champion-image" src="" alt="">
+        <p id="champion-title"></p>
+        <p id="champion-lore"></p>
+    </div>
+    <a href="champions.php">← Retour aux champions</a>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const championName = params.get("name");
+
+        if (!championName) {
+            document.body.innerHTML = "<h2>Champion non trouvé</h2>";
+        } else {
+            fetch(`https://ddragon.leagueoflegends.com/cdn/14.4.1/data/fr_FR/champion/${championName}.json`)
+                .then(response => response.json())
+                .then(data => {
+                    const champion = data.data[championName];
+
+                    document.getElementById("champion-name").textContent = champion.name;
+                    document.getElementById("champion-image").src = `https://ddragon.leagueoflegends.com/cdn/14.4.1/img/champion/${champion.image.full}`;
+                    document.getElementById("champion-title").textContent = champion.title;
+                    document.getElementById("champion-lore").textContent = champion.lore;
+                })
+                .catch(error => {
+                    console.error("Erreur lors du chargement du champion :", error);
+                    document.body.innerHTML = "<h2>Erreur : Impossible de charger ce champion.</h2>";
+                });
+        }
+    </script>
+</body>
+</html>
