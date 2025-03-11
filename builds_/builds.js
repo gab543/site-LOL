@@ -1,6 +1,5 @@
-console.log("Script chargé !");
-
 document.addEventListener("DOMContentLoaded", () => {
+    console.log("Script chargé !");
     const itemBoxes = document.querySelectorAll(".item-box");
     const modal = document.getElementById("modal");
     const modalItemList = document.getElementById("modal-item-list");
@@ -60,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
             itemDiv.dataset.itemId = itemId;
             itemDiv.innerHTML = `
                 <img src="https://ddragon.leagueoflegends.com/cdn/14.4.1/img/item/${itemId}.png" alt="${item.name}">
-                <br>${item.name} 
+                <br class = "item-name" >${item.name} 
             `;
             modalItemList.appendChild(itemDiv);
         }
@@ -106,7 +105,10 @@ modalItemList.addEventListener("mouseover", (e) => {
     fetch(
         "https://ddragon.leagueoflegends.com/cdn/14.4.1/data/fr_FR/summoner.json"
     )
-        .then((response) => response.json())
+        .then(response => {
+        console.log("Réponse API:", response);
+        return response.json();
+        })
         .then((data) => {
             console.log("Summoner Spells Data:", data);
             const spells = data.data;

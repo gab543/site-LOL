@@ -9,6 +9,9 @@
 </head>
 
 <body>
+    <?php
+    include("C:UwAmp/www/site-LOL/nav.php")
+    ?>
     <h1>Créer un Build</h1>
     <form id="build-form">
         <!-- Sélection du champion -->

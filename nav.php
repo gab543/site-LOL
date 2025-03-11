@@ -33,6 +33,6 @@
     <ul class="nav-links">
         <li><a href="index.php">Accueil</a></li>
         <li><a href="champions.php">Champions</a></li>
-        <li><a href="builds_\builds.php">Builds</a></li>
+        <li><a href="builds_/builds.php">Builds</a></li>
     </ul>
 </nav>
