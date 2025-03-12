@@ -31,8 +31,8 @@
 <h1>El project dé la dictatourrrrre</h1>
 <nav>
     <ul class="nav-links">
-        <li><a href="index.php">Accueil</a></li>
-        <li><a href="champions.php">Champions</a></li>
+        <li><a href="http://localhost/site-LOL/index.php">Accueil</a></li>
+        <li><a href="http://localhost/site-LOL/champions.php">Champions</a></li>
         <li><a href="builds_/builds.php">Builds</a></li>
     </ul>
 </nav>
