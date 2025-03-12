@@ -103,7 +103,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // 🔥 Récupération des Sorts d'Invocateur
         fetch(
+<<<<<<< Updated upstream
             "https://cors-anywhere.herokuapp.com/https://ddragon.leagueoflegends.com/cdn/14.4.1/data/fr_FR/summoner.json"
+=======
+            "https://ddragon.leagueoflegends.com/cdn/14.4.1/data/fr_FR/summoner.json"
+>>>>>>> Stashed changes
         )
             .then(response => {
             console.log("Réponse API:", response);
@@ -151,4 +155,3 @@ document.addEventListener("DOMContentLoaded", () => {
             );
     });
 });
-
