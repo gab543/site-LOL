@@ -64,9 +64,9 @@
                     champDiv.classList.add("champion");
 
                     champDiv.innerHTML = `
-                        <img src="champions_images/${champion.image.full}" 
+                        <a href="champion.php?name=${champion.id}"><img src="champions_images/${champion.image.full}" 
                             alt="${champion.name}" class="champion-img">
-                        <p>${champion.name}</p>
+                        <p>${champion.name}</p></a>
                     `;
 
                 // Ajoute l'élément au container

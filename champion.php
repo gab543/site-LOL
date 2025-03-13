@@ -37,7 +37,7 @@
         if (!championName) {
             document.body.innerHTML = "<h2>Champion non trouvé</h2>";
         } else {
-            fetch(`builds/${championName}.json`)
+            fetch(`builds_/data/champion.json`)
                 .then(response => response.json())
                 .then(data => {
                     const champion = data.data[championName];
@@ -45,7 +45,7 @@
                     document.getElementById("champion-name").textContent = champion.name;
                     document.getElementById("champion-image").src = `champions_images/${champion.image.full}`;
                     document.getElementById("champion-title").textContent = champion.title;
-                    document.getElementById("champion-lore").textContent = champion.lore;
+                    document.getElementById("champion-lore").textContent = champion.blurb;
                 })
                 .catch(error => {
                     console.error("Erreur lors du chargement du champion :", error);
