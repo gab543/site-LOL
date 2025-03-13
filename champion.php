@@ -37,13 +37,13 @@
         if (!championName) {
             document.body.innerHTML = "<h2>Champion non trouvé</h2>";
         } else {
-            fetch(`https://ddragon.leagueoflegends.com/cdn/14.4.1/data/fr_FR/champion/${championName}.json`)
+            fetch(`builds/${championName}.json`)
                 .then(response => response.json())
                 .then(data => {
                     const champion = data.data[championName];
 
                     document.getElementById("champion-name").textContent = champion.name;
-                    document.getElementById("champion-image").src = `https://ddragon.leagueoflegends.com/cdn/14.4.1/img/champion/${champion.image.full}`;
+                    document.getElementById("champion-image").src = `champions_images/${champion.image.full}`;
                     document.getElementById("champion-title").textContent = champion.title;
                     document.getElementById("champion-lore").textContent = champion.lore;
                 })

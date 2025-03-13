@@ -49,7 +49,7 @@
         <!-- Les champions seront ajoutés ici -->
     </div>
     <script>
-        fetch("data/champion.json")
+        fetch("builds_/data/champion.json")
             .then(response => response.json())
             .then(data => {
                 // L'objet JSON stocke les champions sous "data"
