@@ -1,0 +1,91 @@
+"6631": {
+            "name": "Estropieur",
+            "description": "<mainText><stats><attention>+50</attention> dégâts d'attaque<br><attention>+30%</attention> de vitesse d'attaque<br><attention>+450</attention> PV</stats><br><br><passive>Fendoir</passive><br>Vos attaques infligent des dégâts physiques aux ennemis proches.<br><br><passive>Colère</passive><br>Infliger des <physicalDamage>dégâts physiques</physicalDamage> vous octroie de la vitesse de déplacement.<br><br><active>PROPRIÉTÉ ACTIVE</active><br><active>Onde de choc entravante</active><br>Vous infligez des dégâts physiques aux ennemis proches, vous les <status>ralentissez</status> et vous gagnez de la vitesse de déplacement par champion touché. Vous pouvez bouger lors de l'incantation.</mainText>",
+            "colloq": "",
+            "plaintext": "",
+            "from": [
+                "3077",
+                "3044",
+                "1042"
+            ],
+            "into": [
+                "7016"
+            ],
+            "image": {
+                "full": "6631.png",
+                "sprite": "item4.png",
+                "group": "item",
+                "x": 48,
+                "y": 96,
+                "w": 48,
+                "h": 48
+            },
+            "gold": {
+                "base": 700,
+                "purchasable": true,
+                "total": 3300,
+                "sell": 2310
+            },
+            "tags": [
+                "Health",
+                "Damage",
+                "AttackSpeed",
+                "Slow",
+                "NonbootsMovement"
+            ],
+            "maps": {
+                "11": true,
+                "12": true,
+                "21": true,
+                "22": false,
+                "30": false
+            },
+            "stats": {
+                "FlatHPPoolMod": 450,
+                "FlatPhysicalDamageMod": 50,
+                "PercentAttackSpeedMod": 0.3
+            },
+            "depth": 3
+
+"226631": {
+            "name": "Estropieur",
+            "description": "<mainText><stats><nerfedStat>+60</nerfedStat> dégâts d'attaque<br><attention>+20%</attention> de vitesse d'attaque<br><attention>+375</attention> PV</stats><br><br><passive>Fendoir</passive><br>Vos attaques infligent des dégâts physiques aux ennemis proches.<br><br><passive>Colère</passive><br>Infliger des <physicalDamage>dégâts physiques</physicalDamage> vous octroie de la vitesse de déplacement.<br><br><active>PROPRIÉTÉ ACTIVE</active><br><active>Onde de choc entravante</active><br>Vous infligez des dégâts physiques aux ennemis proches, vous les <status>ralentissez</status> et vous gagnez de la vitesse de déplacement par champion touché. Vous pouvez bouger lors de l'incantation.</mainText>",
+            "colloq": "",
+            "plaintext": "",
+            "into": [
+                "227016"
+            ],
+            "image": {
+                "full": "226631.png",
+                "sprite": "item1.png",
+                "group": "item",
+                "x": 192,
+                "y": 336,
+                "w": 48,
+                "h": 48
+            },
+            "gold": {
+                "base": 3000,
+                "purchasable": true,
+                "total": 3000,
+                "sell": 2100
+            },
+            "tags": [
+                "Health",
+                "Damage",
+                "AttackSpeed",
+                "Slow",
+                "NonbootsMovement"
+            ],
+            "maps": {
+                "11": false,
+                "12": false,
+                "21": false,
+                "22": false,
+                "30": true
+            },
+            "stats": {
+                "FlatHPPoolMod": 375,
+                "FlatPhysicalDamageMod": 60,
+                "PercentAttackSpeedMod": 0.2
+            }

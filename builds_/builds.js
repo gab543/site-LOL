@@ -47,23 +47,41 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Remplir la liste des items dans le modal
     function populateModalItems(items) {
-        modalItemList.innerHTML = ""; // Réinitialiser la liste
+        modalItemList.innerHTML = ""; // On vide la liste avant de remplir
+    
+        const seenItems = new Set(); // Pour éviter les doublons
+    
         for (const itemId in items) {
             const item = items[itemId];
-
+    
             // Vérifier si l'objet est achetable
             if (!item.gold.purchasable) continue;
+    
+            // Ignorer les items dont l'ID commence par "22"
+            if (itemId.startsWith("22")) continue;
 
+            if ("requiredChampion" in item) continue; 
+    
+            // Vérifier si l'item a déjà été ajouté
+            if (seenItems.has(itemId)) continue;
+            seenItems.add(itemId);
+    
+            // ✅ Vérifier si les tags contiennent "Vision" ET "Jungle"
+            if (!item.tags.includes("Vision") || !item.tags.includes("Jungle")) continue;
+    
             // Créer un élément pour l'item
             const itemDiv = document.createElement("div");
             itemDiv.dataset.itemId = itemId;
             itemDiv.innerHTML = `
-                <img src="item-images/${itemId}.png" alt="${item.name}">
-                <br class = "item-name" >${item.name} 
+                <img src="items_images/${itemId}.png" alt="${item.name}">
+                <br class="item-name">${item.name}
             `;
+    
             modalItemList.appendChild(itemDiv);
         }
     }
+    
+    
 
     // Sélection d'un item dans le modal
     modalItemList.addEventListener("click", (e) => {
@@ -76,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const selectedBox = document.querySelector(
                 `.item-box[data-index="${selectedBoxIndex}"]`
             );
-            selectedBox.innerHTML = `<img src="https://cors-anywhere.herokuapp.com/https://ddragon.leagueoflegends.com/cdn/14.4.1/img/item/${selectedItemId}.png" alt="Item">`;
+            selectedBox.innerHTML = `<img src="items_images/${selectedItemId}.png" alt="Item">`;
             selectedBox.dataset.itemId = selectedItemId;
             modal.style.display = "none"; // Fermer le modal après sélection
         }
@@ -85,7 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     modalItemList.addEventListener("mouseover", (e) => {
         let target = e.target;
-        while (target && !target.dataset.itemId) {
+        while (target && target.dataset.itemId !== undefined) {
             target = target.parentNode; // Remonter jusqu'à l'élément qui contient l'ID
         }
         if (target && target.dataset.itemId) {
@@ -99,15 +117,11 @@ document.addEventListener("DOMContentLoaded", () => {
             itemTooltip.style.display = "block";
         }
         
-            
+    });       
 
             // 🔥 Récupération des Sorts d'Invocateur
         fetch(
-<<<<<<< Updated upstream
-            "https://cors-anywhere.herokuapp.com/https://ddragon.leagueoflegends.com/cdn/14.4.1/data/fr_FR/summoner.json"
-=======
-            "https://ddragon.leagueoflegends.com/cdn/14.4.1/data/fr_FR/summoner.json"
->>>>>>> Stashed changes
+            "data/summoner.json"
         )
             .then(response => {
             console.log("Réponse API:", response);
@@ -122,7 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     spellCard.classList.add("card");
 
                     spellCard.innerHTML = `
-                    <img src="https://ddragon.leagueoflegends.com/cdn/14.4.1/img/spell/${spellKey}.png" alt="${spell.name}">
+                    <img src="summoners_images/${spellKey}.png" alt="${spell.name}">
                     <h3>${spell.name}</h3>
                     <p>${spell.description}</p>`;
                     spellsContainer.appendChild(spellCard);
@@ -134,7 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // ⚡ Récupération des Runes
         fetch(
-            "https://ddragon.leagueoflegends.com/cdn/14.4.1/data/fr_FR/runesReforged.json"
+            "data/runesReforged.json"
         )
             .then((response) => response.json())
             .then((data) => {
@@ -144,7 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     runeTreeCard.classList.add("card");
 
                     runeTreeCard.innerHTML = `
-                    <img src="https://ddragon.leagueoflegends.com/cdn/img/${tree.icon}" alt="${tree.name}">
+                    <img src="summoners_images/${tree.icon}" alt="${tree.name}">
                     <h3>${tree.name}</h3>
                     <p>${tree.slots[0].runes[0].name}</p>`;
                     runesContainer.appendChild(runeTreeCard);
@@ -153,5 +167,4 @@ document.addEventListener("DOMContentLoaded", () => {
             .catch((error) =>
                 console.error("Erreur récupération des runes :", error)
             );
-    });
 });
