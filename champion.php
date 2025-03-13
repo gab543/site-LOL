@@ -36,12 +36,15 @@
             const championName = params.get("name");
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         if (!championName) {
             document.body.innerHTML = "<h2>Champion non trouvé</h2>";
         } else {
             fetch(`builds_/data/champion.json`)
                 .then(response => response.json())
 =======
+=======
+>>>>>>> Stashed changes
             if (!championName) {
                 document.body.innerHTML = "<h2>Champion non trouvé</h2>";
                 return;
@@ -54,6 +57,9 @@
                     }
                     return response.json();
                 })
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
                 .then(data => {
                     const champion = data.data[championName];

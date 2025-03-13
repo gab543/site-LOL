@@ -44,8 +44,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     // Charger la liste des items depuis l'API Riot
     fetch("data/item.json")
+=======
+    // Charger la liste des items depuis ton fichier local
+    fetch($item_json)
+>>>>>>> Stashed changes
 =======
     // Charger la liste des items depuis ton fichier local
     fetch($item_json)
@@ -59,6 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Afficher la liste des items dans le modal
     function populateModalItems(items) {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         modalItemList.innerHTML = ""; // On vide la liste avant de remplir
     
         const seenItems = new Set(); // Pour éviter les doublons
@@ -68,16 +74,22 @@ document.addEventListener("DOMContentLoaded", () => {
     
             // Vérifier si l'objet est achetable
 =======
+=======
+>>>>>>> Stashed changes
         modalItemList.innerHTML = ""; 
         for (const itemId in items) {
             const item = items[itemId];
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
             if (!item.gold.purchasable) continue;
     
             // Ignorer les items dont l'ID commence par "22"
             if (itemId.startsWith("22")) continue;
 
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
             if ("requiredChampion" in item) continue; 
     
@@ -94,6 +106,13 @@ document.addEventListener("DOMContentLoaded", () => {
             itemDiv.innerHTML = `
                 <img src="items_images/${itemId}.png" alt="${item.name}">
                 <br class="item-name">${item.name}
+=======
+            const itemDiv = document.createElement("div");
+            itemDiv.dataset.itemId = itemId;
+            itemDiv.innerHTML = `
+                <img src="${item_images}/${itemId}.png" alt="${item.name}">
+                <br>${item.name}
+>>>>>>> Stashed changes
 =======
             const itemDiv = document.createElement("div");
             itemDiv.dataset.itemId = itemId;
@@ -118,10 +137,15 @@ document.addEventListener("DOMContentLoaded", () => {
         if (target && target.dataset.itemId) {
             const selectedItemId = target.dataset.itemId;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             const selectedBox = document.querySelector(
                 `.item-box[data-index="${selectedBoxIndex}"]`
             );
             selectedBox.innerHTML = `<img src="items_images/${selectedItemId}.png" alt="Item">`;
+=======
+            const selectedBox = document.querySelector(`.item-box[data-index="${selectedBoxIndex}"]`);
+            selectedBox.innerHTML = `<img src="item_images/${selectedItemId}.png" alt="Item">`;
+>>>>>>> Stashed changes
 =======
             const selectedBox = document.querySelector(`.item-box[data-index="${selectedBoxIndex}"]`);
             selectedBox.innerHTML = `<img src="item_images/${selectedItemId}.png" alt="Item">`;
@@ -141,6 +165,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const spellCard = document.createElement("div");
                 spellCard.classList.add("card");
 
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
     modalItemList.addEventListener("mouseover", (e) => {
         let target = e.target;
@@ -182,6 +207,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 spellCard.innerHTML = `
                     <img src="summoner_images/${spellKey}.png" alt="${spell.name}">
 >>>>>>> Stashed changes
+=======
+                spellCard.innerHTML = `
+                    <img src="summoner_images/${spellKey}.png" alt="${spell.name}">
+>>>>>>> Stashed changes
                     <h3>${spell.name}</h3>
                     <p>${spell.description}</p>`;
                 spellsContainer.appendChild(spellCard);
@@ -189,6 +218,7 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .catch((error) => console.error("Erreur récupération des sorts :", error));
 
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
         // ⚡ Récupération des Runes
         fetch(
@@ -224,9 +254,26 @@ document.addEventListener("DOMContentLoaded", () => {
                     <img src="summoners_images/${tree.icon}" alt="${tree.name}">
                     <h3>${tree.name}</h3>
                     <p>${tree.slots[0].runes[0].name}</p>`;
+=======
+    // ⚡ Récupération des Runes
+    fetch("data/runesReforged.json")
+        .then((response) => response.json())
+        .then((data) => {
+            data.forEach((tree) => {
+                const runeTreeCard = document.createElement("div");
+                runeTreeCard.classList.add("card");
+
+                runeTreeCard.innerHTML = `
+                    <img src="summoners_images/${tree.icon}" alt="${tree.name}">
+                    <h3>${tree.name}</h3>
+                    <p>${tree.slots[0].runes[0].name}</p>`;
+>>>>>>> Stashed changes
                 runesContainer.appendChild(runeTreeCard);
             });
         })
         .catch((error) => console.error("Erreur récupération des runes :", error));
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 });
