@@ -37,12 +37,15 @@
 
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         if (!championName) {
             document.body.innerHTML = "<h2>Champion non trouvé</h2>";
         } else {
             fetch(`builds_/data/champion.json`)
                 .then(response => response.json())
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
             if (!championName) {
@@ -58,6 +61,9 @@
                     return response.json();
                 })
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
