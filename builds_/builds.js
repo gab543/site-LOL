@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Charger la liste des items depuis l'API Riot
-    fetch("https://ddragon.leagueoflegends.com/cdn/14.4.1/data/fr_FR/item.json")
+    fetch("data/item.json")
         .then((response) => response.json())
         .then((data) => {
             itemsData = data.data;
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const itemDiv = document.createElement("div");
             itemDiv.dataset.itemId = itemId;
             itemDiv.innerHTML = `
-                <img src="https://cors-anywhere.herokuapp.com/https://ddragon.leagueoflegends.com/cdn/14.4.1/img/item/${itemId}.png" alt="${item.name}">
+                <img src="item-images/${itemId}.png" alt="${item.name}">
                 <br class = "item-name" >${item.name} 
             `;
             modalItemList.appendChild(itemDiv);

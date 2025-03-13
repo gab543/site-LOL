@@ -49,37 +49,32 @@
         <!-- Les champions seront ajoutés ici -->
     </div>
     <script>
-        const API_URL = "https://ddragon.leagueoflegends.com/cdn/14.4.1/data/fr_FR/champion.json";  
+        fetch("data/champion.json")
+            .then(response => response.json())
+            .then(data => {
+                // L'objet JSON stocke les champions sous "data"
+                const champions = data.data;
 
-        async function fetchChampions() {
-            try {
-                const response = await fetch(API_URL);
-                const data = await response.json();
-                const champions = Object.values(data.data);
-                displayChampions(champions);
-            } catch (error) {
-                console.error("Erreur lors du chargement des champions :", error);
-            }
-        }
+                // Sélection de l'endroit où afficher les champions
+                const container = document.getElementById("championContainer");
 
-        function displayChampions(champions) {
-            const container = document.getElementById("championContainer");
-            container.innerHTML = "";
+                // Parcours des champions et création des éléments HTML
+                Object.values(champions).forEach(champion => {
+                    const champDiv = document.createElement("div");
+                    champDiv.classList.add("champion");
 
-            champions.forEach(champion => {
-                const champDiv = document.createElement("div");
-                champDiv.classList.add("champion");
-                champDiv.innerHTML = `
-                    <a href="champion.php?name=${champion.id}">
-                        <img src="https://ddragon.leagueoflegends.com/cdn/14.4.1/img/champion/${champion.image.full}" alt="${champion.name}">
-                        <div class="champion-name">${champion.name}</div>
-                    </a>
-                `;
+                    champDiv.innerHTML = `
+                        <img src="champions_images/${champion.image.full}" 
+                            alt="${champion.name}" class="champion-img">
+                        <p>${champion.name}</p>
+                    `;
+
+                // Ajoute l'élément au container
                 container.appendChild(champDiv);
-            });
-        }
-
-        fetchChampions();
+                });
+            })
+            .catch(error => console.error("Erreur lors du chargement des champions :", error));
+            
     </script>
 </body>
 </html>
