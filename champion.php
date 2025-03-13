@@ -31,16 +31,37 @@
     <a href="champions.php">← Retour aux champions</a>
 
     <script>
-        const params = new URLSearchParams(window.location.search);
-        const championName = params.get("name");
+        document.addEventListener("DOMContentLoaded", () => {
+            const params = new URLSearchParams(window.location.search);
+            const championName = params.get("name");
 
+<<<<<<< Updated upstream
         if (!championName) {
             document.body.innerHTML = "<h2>Champion non trouvé</h2>";
         } else {
             fetch(`builds_/data/champion.json`)
                 .then(response => response.json())
+=======
+            if (!championName) {
+                document.body.innerHTML = "<h2>Champion non trouvé</h2>";
+                return;
+            }
+
+            fetch("data/champion.json")
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Erreur lors du chargement du fichier JSON");
+                    }
+                    return response.json();
+                })
+>>>>>>> Stashed changes
                 .then(data => {
                     const champion = data.data[championName];
+
+                    if (!champion) {
+                        document.body.innerHTML = `<h2>Champion "${championName}" non trouvé</h2>`;
+                        return;
+                    }
 
                     document.getElementById("champion-name").textContent = champion.name;
                     document.getElementById("champion-image").src = `champions_images/${champion.image.full}`;
@@ -51,7 +72,8 @@
                     console.error("Erreur lors du chargement du champion :", error);
                     document.body.innerHTML = "<h2>Erreur : Impossible de charger ce champion.</h2>";
                 });
-        }
+        });
     </script>
+
 </body>
 </html>
