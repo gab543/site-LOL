@@ -39,3 +39,4 @@ for tree in data:
             print(f"Téléchargé : {rune_icon_path}")
 
 print("Toutes les images de runes ont été téléchargées !")
+ 

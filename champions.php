@@ -64,7 +64,7 @@
                     champDiv.classList.add("champion");
 
                     champDiv.innerHTML = `
-                        <a href="champion.php?name=${champion.id}"><img src="champions_images/${champion.image.full}" 
+                        <a href="champion.php?name=${champion.id}"><img src="images/champions_images/${champion.image.full}" 
                             alt="${champion.name}" class="champion-img">
                         <p>${champion.name}</p></a>
                     `;
