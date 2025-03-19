@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const itemDiv = document.createElement("div");
             itemDiv.dataset.itemId = itemId;
             itemDiv.innerHTML = `
-                <img src="../images/items_images/${itemId}.png" alt="${item.name}">
+                <img src="../img/items_images/${itemId}.png" alt="${item.name}">
                 <p>${item.name}</p>
             `;
             modalItemList.appendChild(itemDiv);
@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const spellCard = document.createElement("div");
             spellCard.classList.add("card");
             spellCard.innerHTML = `
-                <img src="../images/summoner_images/${spellKey}.png" alt="${spell.name}">
+                <img src="../img/summoners_images/${spellKey}.png" alt="${spell.name}">
                 <h3>${spell.name}</h3>
                 <p>${spell.description}</p>
             `;
@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const runeTreeCard = document.createElement("div");
                 runeTreeCard.classList.add("card");
                 runeTreeCard.innerHTML = `
-                    <img src="../images/rune_images/${tree.id}.png" alt="${tree.name}">
+                    <img src="../img/${tree.icon}" alt="${tree.name}">
                     <h3>${tree.name}</h3>
                 `;
                 runesContainer.appendChild(runeTreeCard);

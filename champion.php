@@ -8,27 +8,36 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            padding: 20px;
+            background: #FFF;
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin: 0;
+            color: white;
         }
         .champion-container {
             max-width: 600px;
             margin: auto;
-            text-align: center;
+            text-align: center; 
         }
         .champion-image {
-            width: 200px;
-            border-radius: 10px;
+            color: black;
+            border: 0px solid black;
+            background: linear-gradient(to right, rgba(255, 255, 255, 0), rgb(0, 0, 0));
+            width: 100vw;
+            height: 100vh;
+            repeat: no-repeat;
         }
     </style>
 </head>
-<body>
-    <h1 id="champion-name"></h1>
+<body id="body">
+    <img id="champion-image" class="champion-image" src="" alt="">
     <div class="champion-container">
-        <img id="champion-image" class="champion-image" src="" alt="">
+        <h1 id="champion-name"></h1>
         <p id="champion-title"></p>
         <p id="champion-lore"></p>
+        <a href="champions.php">← Retour aux champions</a>
     </div>
-    <a href="champions.php">← Retour aux champions</a>
+    
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
@@ -54,7 +63,7 @@
                     }
 
                     document.getElementById("champion-name").textContent = champion.name;
-                    document.getElementById("champion-image").src = `images/champions_images/${champion.image.full}`;
+                    document.getElementById("body").style.backgroundImage = `url("img/champion/centered/${champion.id}_0.jpg")`;
                     document.getElementById("champion-title").textContent = champion.title;
                     document.getElementById("champion-lore").textContent = champion.blurb;
                 })

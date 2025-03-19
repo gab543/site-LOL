@@ -65,7 +65,7 @@
 
                     champDiv.innerHTML = `
                         <a href="champion.php?name=${champion.id}">
-                        <img src="images/champions_images/${champion.image.full}" 
+                        <img src="img/champion/tiles/${champion.id}_0.jpg" 
                             alt="${champion.name}" class="champion-img">
                         <p>${champion.name}</p></a>
                     `;
