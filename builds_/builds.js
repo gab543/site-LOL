@@ -85,7 +85,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 const runeTreeCard = document.createElement("div");
                 runeTreeCard.classList.add("card");
                 runeTreeCard.innerHTML = `
-                    <img src="rune_images/${tree.id}.png" alt="${tree.name}">
                     <img src="../images/rune_images/${tree.id}.png" alt="${tree.name}">
                     <h3>${tree.name}</h3>
                 `;
