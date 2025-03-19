@@ -34,25 +34,10 @@
         document.addEventListener("DOMContentLoaded", () => {
             const params = new URLSearchParams(window.location.search);
             const championName = params.get("name");
-
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
         if (!championName) {
             document.body.innerHTML = "<h2>Champion non trouvé</h2>";
-        } else {
-            fetch(`builds_/data/champion.json`)
-                .then(response => response.json())
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-            if (!championName) {
-                document.body.innerHTML = "<h2>Champion non trouvé</h2>";
-                return;
-            }
-
+        } 
+        else {
             fetch("data/champion.json")
                 .then(response => {
                     if (!response.ok) {
@@ -60,13 +45,7 @@
                     }
                     return response.json();
                 })
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+
                 .then(data => {
                     const champion = data.data[championName];
 
@@ -76,7 +55,7 @@
                     }
 
                     document.getElementById("champion-name").textContent = champion.name;
-                    document.getElementById("champion-image").src = `champions_images/${champion.image.full}`;
+                    document.getElementById("champion-image").src = `images/champions_images/${champion.image.full}`;
                     document.getElementById("champion-title").textContent = champion.title;
                     document.getElementById("champion-lore").textContent = champion.blurb;
                 })
@@ -84,8 +63,9 @@
                     console.error("Erreur lors du chargement du champion :", error);
                     document.body.innerHTML = "<h2>Erreur : Impossible de charger ce champion.</h2>";
                 });
-        });
-    </script>
+        };
+    });
+</script>
 
 </body>
 </html>

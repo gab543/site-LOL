@@ -49,7 +49,7 @@
         <!-- Les champions seront ajoutés ici -->
     </div>
     <script>
-        fetch("builds_/data/champion.json")
+        fetch("data/champion.json")
             .then(response => response.json())
             .then(data => {
                 // L'objet JSON stocke les champions sous "data"
@@ -64,7 +64,8 @@
                     champDiv.classList.add("champion");
 
                     champDiv.innerHTML = `
-                        <a href="champion.php?name=${champion.id}"><img src="champions_images/${champion.image.full}" 
+                        <a href="champion.php?name=${champion.id}">
+                        <img src="images/champions_images/${champion.image.full}" 
                             alt="${champion.name}" class="champion-img">
                         <p>${champion.name}</p></a>
                     `;

@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Charger les items
-    fetch("data/item.json")
+    fetch("../data/item.json")
         .then((response) => response.json())
         .then((data) => {
             itemsData = data.data;
@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const itemDiv = document.createElement("div");
             itemDiv.dataset.itemId = itemId;
             itemDiv.innerHTML = `
-                <img src="item_images/${itemId}.png" alt="${item.name}">
+                <img src="../images/items_images/${itemId}.png" alt="${item.name}">
                 <p>${item.name}</p>
             `;
             modalItemList.appendChild(itemDiv);
@@ -59,33 +59,34 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Charger les sorts d'invocateur
-    fetch("data/summoner.json")
-        .then(response => response.json())
-        .then(data => {
-            const spells = data.data;
-            for (const spellKey in spells) {
-                const spell = spells[spellKey];
-                const spellCard = document.createElement("div");
-                spellCard.classList.add("card");
-                spellCard.innerHTML = `
-                    <img src="summoner_images/${spellKey}.png" alt="${spell.name}">
-                    <h3>${spell.name}</h3>
-                    <p>${spell.description}</p>
-                `;
-                spellsContainer.appendChild(spellCard);
-            }
-        })
-        .catch(error => console.error("Erreur récupération des sorts :", error));
+    fetch("../data/summoner.json")
+    .then(response => response.json())
+    .then(data => {
+        const spells = data.data;
+        for (const spellKey in spells) {
+            const spell = spells[spellKey];
+            if (spell.key == "54" || spell.key == "55") continue; // Correction ici
+            const spellCard = document.createElement("div");
+            spellCard.classList.add("card");
+            spellCard.innerHTML = `
+                <img src="../images/summoner_images/${spellKey}.png" alt="${spell.name}">
+                <h3>${spell.name}</h3>
+                <p>${spell.description}</p>
+            `;
+            spellsContainer.appendChild(spellCard);
+        }
+    })
+    .catch(error => console.error("Erreur récupération des sorts :", error));
 
     // Charger les runes
-    fetch("data/runesReforged.json")
+    fetch("../data/runesReforged.json")
         .then(response => response.json())
         .then(data => {
             data.forEach((tree) => {
                 const runeTreeCard = document.createElement("div");
                 runeTreeCard.classList.add("card");
                 runeTreeCard.innerHTML = `
-                    <img src="rune_images/${tree.id}.png" alt="${tree.name}">
+                    <img src="../images/rune_images/${tree.id}.png" alt="${tree.name}">
                     <h3>${tree.name}</h3>
                 `;
                 runesContainer.appendChild(runeTreeCard);
