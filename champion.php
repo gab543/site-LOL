@@ -36,15 +36,9 @@
             const championName = params.get("name");
         if (!championName) {
             document.body.innerHTML = "<h2>Champion non trouvé</h2>";
-        } else {
-            fetch(`builds_/data/champion.json`)
-                .then(response => response.json())
-                    if (!championName) {
-                        document.body.innerHTML = "<h2>Champion non trouvé</h2>";
-                    return;
-            }
-
-            fetch("builds_/data/champion.json")
+        } 
+        else {
+            fetch("data/champion.json")
                 .then(response => {
                     if (!response.ok) {
                         throw new Error("Erreur lors du chargement du fichier JSON");
