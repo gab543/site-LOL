@@ -5,9 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Champions de League of Legends</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
+        p{
+            text-decoration: none;
         }
         .search-bar {
             margin: 20px;
@@ -67,7 +66,7 @@
                         <a href="champion.php?name=${champion.id}">
                         <img src="img/champion/tiles/${champion.id}_0.jpg" 
                             alt="${champion.name}" class="champion-img">
-                        <p>${champion.name}</p></a>
+                        <p style="text-decoration: none">${champion.name}</p></a>
                     `;
 
                 // Ajoute l'élément au container

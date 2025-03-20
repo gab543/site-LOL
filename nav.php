@@ -1,8 +1,17 @@
 
 <style>
+    body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        color : #bdbdbd;
+        background-color : #2a2a2a;
+        text-decoration: none;
+    }
     nav {
         background-color: #222;
-        padding: 15px;
+        padding: 30px;
+        margin: 0px;
+        border : 0px;
         display: flex;
         justify-content: center;
     }
@@ -28,7 +37,6 @@
         border-radius: 5px;
     }
 </style>
-<h1>El project dé la dictatourrrrre</h1>
 <nav>
     <ul class="nav-links">
         <li><a href="http://localhost/site-LOL/index.php">Accueil</a></li>
