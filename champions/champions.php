@@ -3,52 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style--champions.css">
     <title>Champions de League of Legends</title>
-    <style>
-        p{
-            text-decoration: none;
-        }
-        .search-bar {
-            margin: 20px;
-            padding: 10px;
-            width: 50%;
-            font-size: 16px;
-        }
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .champion {
-            margin: 10px;
-            text-align: center;
-            cursor: pointer;
-        }
-        .champion img {
-            width: 120px;
-            height: 120px;
-            border-radius: 10px;
-            transition: transform 0.2s;
-        }
-        .champion img:hover {
-            transform: scale(1.1);
-        }
-        .champion-name {
-            margin-top: 5px;
-            font-weight: bold;
-        }
-    </style>
 </head>
 <body>
     <?php
-    include("nav.php")
+    include("../nav.php")
     ?>
     <input type="search" id="search" class="search-bar" placeholder="Rechercher un champion...">
     <div class="container" id="championContainer">
         <!-- Les champions seront ajoutés ici -->
     </div>
     <script>
-        fetch("data/champion.json")
+        fetch("../data/champion.json")
             .then(response => response.json())
             .then(data => {
                 // L'objet JSON stocke les champions sous "data"
@@ -64,7 +31,7 @@
 
                     champDiv.innerHTML = `
                         <a href="champion.php?name=${champion.id}">
-                        <img src="img/champion/tiles/${champion.id}_0.jpg" 
+                        <img src="../img/champion/tiles/${champion.id}_0.jpg" 
                             alt="${champion.name}" class="champion-img">
                         <p style="text-decoration: none">${champion.name}</p></a>
                     `;
@@ -74,7 +41,19 @@
                 });
             })
             .catch(error => console.error("Erreur lors du chargement des champions :", error));
-            
+            document.getElementById("search").addEventListener("input", function() {
+                let searchValue = this.value.toLowerCase();
+                let champions = document.querySelectorAll(".champion");
+
+                champions.forEach(champion => {
+                    let championName = champion.innerText.toLowerCase();
+                    if (championName.includes(searchValue)) {
+                        champion.style.display = "block";
+                    } else {
+                        champion.style.display = "none";
+                    }
+                });
+            });
     </script>
 </body>
 </html>

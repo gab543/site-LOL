@@ -95,7 +95,7 @@
             document.body.innerHTML = "<h2>Champion non trouvé</h2>";
         } 
         else {
-            fetch("data/champion.json")
+            fetch("../data/champion.json")
                 .then(response => {
                     if (!response.ok) {
                         throw new Error("Erreur lors du chargement du fichier JSON");
@@ -111,7 +111,7 @@
                     }
 
                     document.getElementById("champion-name").textContent = champion.name;
-                    document.getElementById("champion-image").style.backgroundImage = `url("img/champion/centered/${champion.id}_0.jpg")`;
+                    document.getElementById("champion-image").style.backgroundImage = `url("../img/champion/centered/${champion.id}_0.jpg")`;
                     document.getElementById("champion-title").textContent = champion.title;
                     document.getElementById("champion-lore").textContent = champion.blurb;
                 })

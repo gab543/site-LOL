@@ -10,7 +10,7 @@
 
 <body>
     <?php
-    include("C:UwAmp/www/site-LOL/nav.php")
+    include("../nav.php")
     ?>
     <h1>Créer un Build</h1>
     <form id="build-form">

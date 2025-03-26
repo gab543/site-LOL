@@ -40,7 +40,8 @@
 <nav>
     <ul class="nav-links">
         <li><a href="http://localhost/site-LOL/index.php">Accueil</a></li>
-        <li><a href="http://localhost/site-LOL/champions.php">Champions</a></li>
+        <li><a href="http://localhost/site-LOL/champions/champions.php">Champions</a></li>
         <li><a href="builds_/builds.php">Builds</a></li>
+        <li><a href="http://localhost/site-LOL/connection/connection.php">Connexion</a></li>
     </ul>
 </nav>
