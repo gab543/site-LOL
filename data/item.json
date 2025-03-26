@@ -2621,46 +2621,7 @@
             },
             "stats": {}
         },
-        "2033": {
-            "name": "Potion de corruption",
-            "description": "<mainText><stats></stats><br><br><active>Propriété active - Consommation :</active> Vous consommez une charge pour récupérer <healing>100 PV</healing> et <scaleMana>75 pts de mana</scaleMana> en 12 sec. Pendant cette durée, les compétences infligeant des dégâts et les attaques appliquent sur les champions ennemis une brûlure qui inflige <magicDamage>15 (20 si vous ne pouvez pas récupérer de mana) pts de dégâts magiques</magicDamage> en 3 sec. La potion contient jusqu'à 3 charges et se recharge en passant à la boutique.<br><br><rules>Les dégâts de corruption sont réduits à 50% quand ils sont déclenchés par des effets de zone ou des dégâts périodiques.</rules></mainText>",
-            "colloq": ";corrupting potion;potion de corruption",
-            "plaintext": "Rend des PV et du mana sur la durée et augmente les dégâts infligés. Se recharge à la boutique.",
-            "from": [
-                "2031"
-            ],
-            "image": {
-                "full": "2033.png",
-                "sprite": "item0.png",
-                "group": "item",
-                "x": 0,
-                "y": 288,
-                "w": 48,
-                "h": 48
-            },
-            "gold": {
-                "base": 350,
-                "purchasable": true,
-                "total": 500,
-                "sell": 200
-            },
-            "tags": [
-                "Active",
-                "Consumable",
-                "HealthRegen",
-                "Lane",
-                "ManaRegen"
-            ],
-            "maps": {
-                "11": true,
-                "12": false,
-                "21": true,
-                "22": false,
-                "30": false
-            },
-            "stats": {},
-            "depth": 2
-        },
+        
         "2049": {
             "name": "Amulette du gardien",
             "description": "<mainText><stats><attention>+20%</attention> d'efficacité des soins et boucliers<br><attention>+20</attention> puissance<br><attention>+20</attention> accélération de compétence</stats><br><br><br><li><passive>Récupération :</passive> vous récupérez <scaleMana>10 pts de mana</scaleMana> toutes les 5 sec. Si vous ne pouvez pas récupérer de mana, vous récupérez <healing>3 PV</healing> à la place.<li><passive>Légendaire :</passive> cet objet compte comme un objet <rarityLegendary>légendaire</rarityLegendary>.</mainText>",

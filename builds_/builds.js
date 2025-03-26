@@ -47,8 +47,11 @@ document.addEventListener("DOMContentLoaded", () => {
         modalItemList.innerHTML = "";
         for (const itemId in items) {
             const item = items[itemId];
-            if (!item.gold.purchasable || itemId.startsWith("22")) continue;
+            
+            if (!item.gold.purchasable || item.requiredChampion || item.requiredAlly|| item.maps["11"] === false)
+            continue;  
             const itemDiv = document.createElement("div");
+            itemDiv.classList.add("item");
             itemDiv.dataset.itemId = itemId;
             itemDiv.innerHTML = `
                 <img src="../img/items_images/${itemId}.png" alt="${item.name}">
@@ -57,6 +60,36 @@ document.addEventListener("DOMContentLoaded", () => {
             modalItemList.appendChild(itemDiv);
         }
     }
+    // Fonction pour supprimer les accents et les caractères spéciaux
+    function removeAccents(str) {
+        // Remplacer les ligatures comme "œ" par "oe"
+        str = str.replace(/œ/g, 'oe');
+        
+        // Normaliser les caractères accentués et enlever les marques diacritiques
+        return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    }
+
+    // Ajout de l'écouteur d'événement pour la barre de recherche
+    document.getElementById("modal-search").addEventListener("input", function() {
+        let searchValue = this.value.toLowerCase();
+        // Normaliser la recherche (retirer les accents et les caractères spéciaux)
+        let normalizedSearchValue = removeAccents(searchValue);
+
+        let items = document.querySelectorAll(".item");
+
+        items.forEach(item => {
+            let itemName = item.innerText.toLowerCase();
+            // Normaliser les noms des éléments pour enlever les accents aussi
+            let normalizedItemName = removeAccents(itemName);
+
+            // Comparer la recherche normalisée avec les noms normalisés
+            if (normalizedItemName.includes(normalizedSearchValue)) {
+                item.style.display = "block";
+            } else {
+                item.style.display = "none";
+            }
+        });
+    });
 
     // Charger les sorts d'invocateur
     fetch("../data/summoner.json")

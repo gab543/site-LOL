@@ -16,9 +16,7 @@
     <form id="build-form">
         <!-- Sélection du champion -->
         <label for="champion">Choisir un champion :</label>
-        <select id="champion" required>
-            <option value="">Sélectionnez un champion</option>
-        </select>-
+        
 
         <!-- Grille pour la sélection des 6 items -->
         <label>Choisir 6 items :</label>

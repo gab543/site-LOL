@@ -5,23 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Détails du Champion</title>
     <style>
+        /* Style de base */
         body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background: #FFF;
-            background-repeat: no-repeat;
-            background-size: cover;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             color: white;
+            background: #111; /* Fond sombre général */
         }
+
         .champion-image {
-            width: 100vw;
+            width: 100%;
             height: 100vh;
             background-size: cover;
             background-position: center;
             position: relative;
             display: flex;
-            align-items: center; /* Centre verticalement */
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease-in-out;
         }
 
         .champion-image::after {
@@ -31,43 +32,79 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0)); /* Dégradé noir à gauche */
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0)); /* Dégradé sombre */
         }
 
         .champion-info {
-            position: absolute; /* Positionne le texte au-dessus de l'image */
-            z-index: 1; /* Place le texte au-dessus de l'image */
-            width: 50%; /* Largeur de 50% de la fenêtre */
+            position: absolute;
+            z-index: 1;
+            color: white;
+            text-align: left;
+            margin: 30px;
+            width: 50%; /* 50% de la largeur */
             height: 100%;
-            text-align: center;
-            align-self: center;
-            color: white;
-            padding: 20px;
-        }
-        .champion-info--text {
-            margin: 0 auto; /* Centre horizontalement */
-            max-width: 50%;
-            color: white;
-        }   
-        
-        .return{
-            padding: 10px;
-            position: fixed;
-            bottom: 10%;
-            height: 40px;
-            background: white;
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0)); /* Dégradé comme fond */
             border-radius: 10px;
+            
+            animation: slideUp 0.5s ease-out forwards;
         }
-        a{
-            text-align: center;
-            justify-self: center;
+
+        @keyframes slideUp {
+            0% {
+                transform: translateY(100px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .champion-info h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            font-weight: bold;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        .champion-info p {
+            font-size: 1.1rem;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .return {
+            padding: 10px 20px;
+            margin-top: 20px;
+            background: white; 
+            color: black;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        .return:hover {
+            background: grey; /* Animation hover */
+        }
+
+        a {
             color: black;
             text-decoration: none;
         }
-        #champion-title{
-            font-size: 20px;
-            font-weight: bold;
-        } 
+
+        /* Pour un meilleur affichage sur mobile */
+        @media (max-width: 768px) {
+            .champion-info {
+                width: 80%;
+            }
+
+            .champion-info h1 {
+                font-size: 2rem;
+            }
+
+            .champion-info p {
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
 <body id="body">
