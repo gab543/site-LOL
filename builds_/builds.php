@@ -48,6 +48,12 @@
                 <h2>Choisir un item</h2>
                 <span class="close-modal">&times;</span>
             </div>
+            <div class="filters">
+                <button class="filter-btn" data-stat="FlatPhysicalDamageMod" data-value="1">Dégâts Physiques</button>
+                <button class="filter-btn" data-stat="FlatMovementSpeedMod" data-value="1">Vitesse de Mouvement</button>
+                <button class="filter-btn" data-stat="FlatHPRegenMod" data-value="1">Régénération de Santé</button>
+                <!-- Ajoute d'autres boutons de filtres pour d'autres stats -->
+            </div>
             <input type="text" id="modal-search" class="search-bar" placeholder="Rechercher un item...">
             <div class="item-list" id="modal-item-list">
                 <!-- La liste des items sera insérée ici -->

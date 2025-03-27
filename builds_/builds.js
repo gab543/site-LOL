@@ -34,32 +34,102 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Charger les items
-    fetch("../data/item.json")
-        .then((response) => response.json())
-        .then((data) => {
-            itemsData = data.data;
-            populateModalItems(itemsData);
-        })
-        .catch(error => console.error("Erreur lors du chargement des items:", error));
+// Charger les items depuis un fichier JSON
+fetch("../data/item.json")
+    .then((response) => response.json())
+    .then((data) => {
+        itemsData = data.data;
+        populateModalItems(itemsData);
+    })
+    .catch(error => console.error("Erreur lors du chargement des items:", error));
 
-    function populateModalItems(items) {
-        modalItemList.innerHTML = "";
-        for (const itemId in items) {
-            const item = items[itemId];
-            
-            if (!item.gold.purchasable || item.requiredChampion || item.requiredAlly|| item.maps["11"] === false)
-            continue;  
-            const itemDiv = document.createElement("div");
-            itemDiv.classList.add("item");
-            itemDiv.dataset.itemId = itemId;
-            itemDiv.innerHTML = `
-                <img src="../img/items_images/${itemId}.png" alt="${item.name}">
-                <p>${item.name}</p>
-            `;
-            modalItemList.appendChild(itemDiv);
-        }
+// Fonction pour afficher les objets dans le modal
+function populateModalItems(items) {
+    const modalItemList = document.querySelector('#modal-item-list');
+    if (!modalItemList) {
+        console.error("L'élément modal-item-list n'a pas été trouvé.");
+        return;
     }
+    modalItemList.innerHTML = ""; // Effacer les éléments existants
+    if (Object.keys(items).length === 0) {
+        modalItemList.innerHTML = "<p>Aucun objet trouvé avec les filtres sélectionnés.</p>";
+        return;
+    }
+    
+    for (const itemId in items) {
+        const item = items[itemId];
+
+        // Vérifier l'itemId et afficher un message dans la console
+        console.log("itemId:", itemId); // Ceci va t'aider à vérifier si l'itemId est correct
+        
+        // Vérification de conditions (exemple : si l'objet est achetable, s'il n'a pas de champion requis, etc.)
+        if (!item.gold.purchasable || item.requiredChampion || item.requiredAlly || item.maps["11"] === false) {
+            continue;
+        }
+
+        const itemDiv = document.createElement("div");
+        itemDiv.classList.add("item");
+        itemDiv.dataset.itemId = itemId;
+        itemDiv.innerHTML = `
+            <img src="../img/items_images/${itemId}.png" alt="${item.name}">
+            <p>${item.name}</p>
+        `;
+        modalItemList.appendChild(itemDiv);
+    }
+}
+
+
+// Gérer les filtres
+const buttons = document.querySelectorAll('.filter-btn');
+let activeFilters = {};
+
+// Appliquer les filtres au clic des boutons
+buttons.forEach(button => {
+    button.addEventListener('click', () => {
+        const stat = button.dataset.stat;
+        const value = parseInt(button.dataset.value, 10);
+
+        // Toggle active state
+        button.classList.toggle('active');
+        
+        if (button.classList.contains('active')) {
+            // Ajouter le filtre actif
+            if (!activeFilters[stat]) {
+                activeFilters[stat] = [];
+            }
+            activeFilters[stat].push(value);
+        } else {
+            // Retirer le filtre actif
+            activeFilters[stat] = activeFilters[stat].filter(v => v !== value);
+        }
+
+        // Appliquer les filtres
+        filterItems();
+    });
+});
+
+// Fonction de filtrage des objets en fonction des filtres actifs
+    function filterItems() {
+        // Convertir 'itemsData' en tableau de paires [itemId, item] avec Object.entries
+        const filteredItems = Object.entries(itemsData)
+            .filter(([itemId, item]) => {
+                // Vérifier tous les filtres actifs
+                return Object.keys(activeFilters).every(stat => {
+                    return activeFilters[stat].some(value => item.stats[stat] >= value);
+                });
+            })
+            .reduce((acc, [itemId, item]) => {
+                // Reconstruire un objet à partir des paires filtrées, avec itemId comme clé
+                acc[itemId] = item;
+                return acc;
+            }, {});
+
+            if (Object.keys(activeFilters).length === 0) {
+                // Si aucun filtre n'est actif, montrer tous les items
+                populateModalItems(itemsData);
+                return;
+            }
+        }
     // Fonction pour supprimer les accents et les caractères spéciaux
     function removeAccents(str) {
         // Remplacer les ligatures comme "œ" par "oe"
@@ -90,6 +160,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
+    
 
     // Charger les sorts d'invocateur
     fetch("../data/summoner.json")

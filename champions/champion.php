@@ -39,13 +39,13 @@
             position: absolute;
             z-index: 1;
             color: white;
+            left: 0px;
             text-align: left;
             margin: 30px;
-            width: 50%; /* 50% de la largeur */
+            width: 25%; /* 50% de la largeur */
             height: 100%;
             background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0)); /* Dégradé comme fond */
             border-radius: 10px;
-            
             animation: slideUp 0.5s ease-out forwards;
         }
 
@@ -59,10 +59,16 @@
         }
 
         .champion-info h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
+            font-size: 5rem;
+            margin-bottom: 1em;
             font-weight: bold;
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        .champion-info #champion-title {
+            font-size: 2rem;
+            margin-bottom: 1em;
+            font-weight: bold;
         }
 
         .champion-info p {
@@ -73,8 +79,10 @@
         }
 
         .return {
+            position: absolute; 
             padding: 10px 20px;
             margin-top: 20px;
+            bottom: 10%;
             background: white; 
             color: black;
             border-radius: 5px;
@@ -115,9 +123,9 @@
                 <h1 id="champion-name"></h1>
                 <p id="champion-title"></p>
                 <p id="champion-lore"></p>
-                <div class="return" >
-                    <a href="champions.php">← Retour aux champions</a>
-                </div>               
+                <button class="return" type="button" href="champions.php">
+                    ← Retour aux champions
+                </button>             
             </div>
         </div>
     </div>
@@ -125,6 +133,7 @@
     
 
     <script>
+        
         document.addEventListener("DOMContentLoaded", () => {
             const params = new URLSearchParams(window.location.search);
             const championName = params.get("name");
@@ -157,6 +166,9 @@
                     document.body.innerHTML = "<h2>Erreur : Impossible de charger ce champion.</h2>";
                 });
             }
+        });
+        document.querySelector(".return").addEventListener("click", () => {
+            window.location.href = "champions.php";
         });
     </script>
 

@@ -29,6 +29,22 @@ label {
     margin-top: 20px;
 }
 
+.filters {
+    margin-bottom: 20px;
+}
+
+.filter-btn {
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+}
+
+.filter-btn.active {
+    background-color: #4caf50;
+    color: white;
+}
 .item-box {
     border: 2px dashed #ccc;
     height: 100px;
