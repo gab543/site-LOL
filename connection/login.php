@@ -63,6 +63,13 @@ if(isset($_POST['submit']))
             <div class="input-box">
                 <input type="text" name="username" id="username" required>
                 <label for="username">Nom d'utilisateur</label>
+                <script type="text/javascript">
+                    var text = document.getElementById('username'); // On récupère le texte
+                    text.addEventListener('focus', function(e) { // On fait un event pour savoir si il est focus
+                    if(e.target.value != "") // Si y'a une valeur dans l'input
+                        e.target.style.backgroundColor = "red" ; // On met le fond en rouge, Oublie des guillemets
+                    }, true);
+                </script>
             </div>
             <div class="input-box">
                 <input type="password" name="password" id="password" required>

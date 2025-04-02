@@ -31,9 +31,18 @@ if(isset($_POST['submit']))
                         ':pass'=>$hashPassword,
                     ];
                     
-                    $handle->execute($params);
+                    if ($handle->execute($params)) {
+                        // Récupérer l'ID de l'utilisateur nouvellement inscrit
+                        $user_id = $pdo->lastInsertId();
                     
-                    $success = 'User has been created successfully';
+                        // Démarrer la session et stocker les infos de l'utilisateur
+                        $_SESSION['user_id'] = $user_id;
+                        $_SESSION['username'] = $username;
+                        $_SESSION['first_name'] = $firstName;
+                        $_SESSION['last_name'] = $lastName;
+                    
+                        $success = 'User has been created successfully. Logging in...';
+                    }
                     
                 }
                 catch(PDOException $e){
@@ -116,14 +125,26 @@ if(isset($_POST['submit']))
                 
                 if(isset($success))
                 {
-                    
                     echo '<div class="alert alert-success">'.$success.'</div>';
+                    echo '<script>
+                            setTimeout(function() {
+                                window.location.href = "../index.php";
+                            }, 1000);
+                        </script>';
+                    
                 }
 			?>
 			<form method="POST" action="<?php echo $_SERVER['PHP_SELF'];?>">
                 <div class="form-group">
 					<label for="first_name">First Name:</label>
 					<input type="text" name="first_name" id="first_name" placeholder="Enter First Name" class="form-control" value="<?php echo $valFirstName??''?>">
+                    <script type="text/javascript">
+                        var text = document.getElementById('first_name'); // On récupère le texte
+                        text.addEventListener('focus', function(e) { // On fait un event pour savoir si il est focus
+                        if(e.target.value != "") // Si y'a une valeur dans l'input
+                            e.target.style.backgroundColor = "red" ; // On met le fond en rouge, Oublie des guillemets
+                        }, true);
+                    </script>
 				</div>
                 <div class="form-group">
 					<label for="last_name">Last Name:</label>
