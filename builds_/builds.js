@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
         modal.style.display = "block";
         modalSearch.value = "";
         populateModalItems(itemsData);
+        document.getElementsByTagName("body")[0].style.overflow = "hidden";
     }
 
     closeModalBtn.addEventListener("click", () => {
@@ -60,7 +61,7 @@ function populateModalItems(items) {
         const item = items[itemId];
 
         // Vérifier l'itemId et afficher un message dans la console
-        console.log("itemId:", itemId); // Ceci va t'aider à vérifier si l'itemId est correct
+        //console.log("itemId:", itemId); // Ceci va t'aider à vérifier si l'itemId est correct
         
         // Vérification de conditions (exemple : si l'objet est achetable, s'il n'a pas de champion requis, etc.)
         if (!item.gold.purchasable || item.requiredChampion || item.requiredAlly || item.maps["11"] === false) {
@@ -100,7 +101,8 @@ buttons.forEach(button => {
             activeFilters[stat].push(value);
         } else {
             // Retirer le filtre actif
-            activeFilters[stat] = activeFilters[stat].filter(v => v !== value);
+            delete activeFilters[stat];
+            //activeFilters[stat] = activeFilters[stat].filter(v => v !== value);
         }
 
         // Appliquer les filtres
@@ -122,13 +124,18 @@ buttons.forEach(button => {
                 // Reconstruire un objet à partir des paires filtrées, avec itemId comme clé
                 acc[itemId] = item;
                 return acc;
-            }, {});
-
-            if (Object.keys(activeFilters).length === 0) {
-                // Si aucun filtre n'est actif, montrer tous les items
-                populateModalItems(itemsData);
-                return;
-            }
+            }, {});  
+        if (Object.keys(activeFilters).length === 0) {
+            // Si aucun filtre n'est actif, montrer tous les items
+            populateModalItems(itemsData);
+            return;
+        }
+        else
+        {
+            // Afficher les objets filtrés
+            populateModalItems(filteredItems);
+            return;
+        }
         }
     // Fonction pour supprimer les accents et les caractères spéciaux
     function removeAccents(str) {
