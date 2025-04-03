@@ -1,0 +1,12 @@
+MP 
+HP 
+ArmorMod 
+ArmorPenetration 
+PhysicalDamage 
+MagicDamage 
+MovementSpeed 
+AttackSpeed
+Crit
+Cooldown
+MagicPenetration
+SpellBlock

@@ -34,13 +34,14 @@ if(isset($_POST['submit']))
                     if ($handle->execute($params)) {
                         // Récupérer l'ID de l'utilisateur nouvellement inscrit
                         $user_id = $pdo->lastInsertId();
-                    
-                        // Démarrer la session et stocker les infos de l'utilisateur
-                        $_SESSION['user_id'] = $user_id;
+                        
+                        // Définir les informations de session essentielles
+                        $_SESSION['id'] = $user_id;
                         $_SESSION['username'] = $username;
                         $_SESSION['first_name'] = $firstName;
                         $_SESSION['last_name'] = $lastName;
-                    
+                        $_SESSION['loggedin'] = true;
+                        
                         $success = 'User has been created successfully. Logging in...';
                     }
                     
@@ -142,7 +143,7 @@ if(isset($_POST['submit']))
                         var text = document.getElementById('first_name'); // On récupère le texte
                         text.addEventListener('focus', function(e) { // On fait un event pour savoir si il est focus
                         if(e.target.value != "") // Si y'a une valeur dans l'input
-                            e.target.style.backgroundColor = "red" ; // On met le fond en rouge, Oublie des guillemets
+                            e.target.style.backgroundColor = "transparent" ; // On met le fond en rouge, Oublie des guillemets
                         }, true);
                     </script>
 				</div>

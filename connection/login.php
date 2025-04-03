@@ -16,8 +16,13 @@ if(isset($_POST['submit']))
             $getRow = $handle->fetch(PDO::FETCH_ASSOC);
             if(password_verify($password, $getRow['password']))
             {
-                unset($getRow['password']);
-                $_SESSION = $getRow;
+                // Stocker les informations importantes dans la session
+                $_SESSION['username'] = $getRow['username'];
+                $_SESSION['first_name'] = $getRow['first_name'];
+                $_SESSION['last_name'] = $getRow['last_name'];
+                $_SESSION['profile_picture'] = $getRow['profile_picture'];
+                $_SESSION['loggedin'] = true;
+                
                 header('location:../index.php');
                 exit();
             }

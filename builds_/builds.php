@@ -49,10 +49,17 @@
                 <span class="close-modal">&times;</span>
             </div>
             <div class="filters">
-                <button class="filter-btn" data-stat="FlatPhysicalDamageMod" data-value="1">Dégâts Physiques</button>
-                <button class="filter-btn" data-stat="FlatMovementSpeedMod" data-value="1">Vitesse de Mouvement</button>
-                <button class="filter-btn" data-stat="FlatHPRegenMod" data-value="1">Régénération de Santé</button>
-                <!-- Ajoute d'autres boutons de filtres pour d'autres stats -->
+                <button class="filter-btn" data-stat="MP">Mana</button>
+                <button class="filter-btn" data-stat="HP">Santé</button>
+                <button class="filter-btn" data-stat="Armor">Armure</button>
+                <button class="filter-btn" data-stat="ArmorPen">Pénétration d'Armure</button>
+                <button class="filter-btn" data-stat="Physical">Dégâts Physiques</button>
+                <button class="filter-btn" data-stat="Magic">Dégâts Magiques</button>
+                <button class="filter-btn" data-stat="MovementSpeed">Vitesse de Mouvement</button>
+                <button class="filter-btn" data-stat="AttackSpeed">Vitesse d'Attaque</button>
+                <button class="filter-btn" data-stat="Crit">Critique</button>
+                <button class="filter-btn" data-stat="MagicPen">Pénétration Magique</button>
+                <button class="filter-btn" data-stat="SpellBlock">Résistance Magique</button>
             </div>
             <input type="text" id="modal-search" class="search-bar" placeholder="Rechercher un item...">
             <div class="item-list" id="modal-item-list">
@@ -61,6 +68,7 @@
         </div>
     </div>
 
-    <script src="builds.js"></script>
+    <script type="module" src="filters.js"></script>
+    <script type="module" src="builds.js"></script>
 </body>
 </html>
