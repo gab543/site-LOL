@@ -59,29 +59,34 @@ label {
     max-height: 100%;
 }
 
-/* Styles pour le modal */
+/* Styles pour le fond opaque du modal */
 .modal {
-    display: none;
+    display: none; /* Initialement masqué */
     position: fixed;
-    z-index: 1000;
-    left: 0;
     top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.7);
-    
-}
+    left: 0;
+    width: 100%; /* Couvre toute la largeur de l'écran */
+    height: 100vh; /* Couvre toute la hauteur de l'écran */
+    max-height: 100vh; /* Limite la hauteur à 100% de l'écran */
+    background-color: rgba(0, 0, 0, 0.7); /* Filtre opaque pour assombrir */
+    z-index: 1000; /* S'assure que le modal est au-dessus des autres éléments */
+    }
 
-.modal-content {
-    background: #333;
+    .modal-content {
+    position: relative; /* Position relative pour le contenu */
+    margin: auto; /* Centré horizontalement */
+    top: 5%; /* Légèrement décalé du haut */
+    margin-bottom: 5%; /* Ajout d'espacement en bas */
+    width: 50%; /* Largeur de 50% de l'écran */
+    max-height: 90%; /* Limite la hauteur à 90% de l'écran */
+    box-sizing: border-box; /* Inclut les marges et les bordures dans le calcul de la hauteur totale */
+    background: #333; /* Couleur de fond du contenu */
     padding: 25px;
     border-radius: 8px;
-    width: 90%;
-    max-width: 400px;
-    position: relative;
     color: white;
     text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: auto; /* Permet le défilement si le contenu dépasse */
 }
 
 .close-modal {
@@ -168,4 +173,25 @@ h3 {
 p {
     font-size: 14px;
     color: #bdbdbd;
+}
+
+/* Styles pour la barre de défilement */
+::-webkit-scrollbar {
+    width: 10px; /* Largeur de la barre de défilement */
+    height: 10px; /* Hauteur de la barre de défilement horizontale */
+}
+
+::-webkit-scrollbar-track {
+    background: #2a2a2a; /* Couleur de l'arrière-plan de la piste */
+    border-radius: 10px; /* Arrondi des coins de la piste */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #353535; /* Couleur de la barre de défilement */
+    border-radius: 10px; /* Arrondi des coins de la barre */
+    border: 2px solid #2a2a2a; /* Bordure pour un effet de contraste */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #444444; /* Couleur de la barre au survol */
 }
