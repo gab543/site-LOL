@@ -62,7 +62,8 @@ input[type="search"]:focus {
 
 .champion img {
     width: 100%;
-    height: 180px;
+    max-width: 100%;
+    max-height: 180px;
     object-fit: cover;
     transition: opacity 0.3s ease;
 }

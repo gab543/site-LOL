@@ -1,0 +1,15 @@
+#builds-list, #champ-list{
+    position: flex;
+    flex-direction: row; 
+    padding: 10px 20px;
+    margin-top: 20px;
+    background: white; 
+    color: black;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+#builds-list:hover, #champ-list:hover {
+    background: grey; /* Animation hover */
+}

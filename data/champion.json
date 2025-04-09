@@ -1693,6 +1693,56 @@
                 "attackspeed": 0.658
             }
         },
+        "Gabriel": {
+            "version": "14.4.1",
+            "id": "Gabriel",
+            "key": "999",
+            "name": "Gabriel",
+            "title": "Le grand maître poutreur de fion",
+            "blurb": "Gabriel est un personnage fictif de l'univers de League of Legends. Il est connu pour son rôle dans l'histoire et son impact sur le monde du jeu. Bien que peu d'informations soient disponibles à son sujet, il est souvent mentionné dans les discussions...",
+            "info": {
+                "attack": 5,
+                "defense": 5,
+                "magic": 5,
+                "difficulty": 5
+            },
+            "image": {
+                "full": "Gabriel.png",
+                "sprite": "champion0.png",
+                "group": "champion",
+                "x": 432,
+                "y": 0,
+                "w": 48,
+                "h": 48
+            },
+            "tags": [
+                "Mage",
+                "Support"
+            ],
+            "partype": "Mana",
+            "stats": {
+                "hp": 600,
+                "hpperlevel": 100,
+                "mp": 300,
+                "mpperlevel": 50,
+                "movespeed": 330,
+                "armor": 30,
+                "armorperlevel": 5,
+                "spellblock": 30,
+                "spellblockperlevel": 1.5,
+                "attackrange": 550,
+                "hpregen": 5,
+                "hpregenperlevel": 0.5,
+                "mpregen": 8,
+                "mpregenperlevel": 0.7,
+                "crit": 0,
+                "critperlevel": 0,
+                "attackdamage": 60,
+                "attackdamageperlevel": 3,
+                "attackspeedperlevel": 2.5,
+                "attackspeed": 0.625
+            }
+        },
         "Galio": {
             "version": "14.4.1",
             "id": "Galio",
@@ -3882,6 +3932,7 @@
                 "attackspeed": 0.8
             }
         },
+        
         "MasterYi": {
             "version": "14.4.1",
             "id": "MasterYi",
@@ -3932,6 +3983,72 @@
                 "attackspeed": 0.679
             }
         },
+        "Mathieu":{
+            "version": "14.4.1",
+            "id": "Mathieu",
+            "key": "999",
+            "name": "Mathieu",
+            "title": "Le meilleur",
+            "blurb": "Mathieu est le meilleur joueur de League of Legends au monde, il est connu pour son incroyable talent et sa capacité à dominer ses adversaires. Son style de jeu agressif et sa connaissance approfondie du jeu en font un véritable champion.",
+            "info": {
+                "attack": 10,
+                "defense": 10,
+                "magic": 10,
+                "difficulty": 10
+            },
+            "image": {
+                "full": "Mathieu.png",
+                "sprite": "champion2.png",
+                "group": "champion",
+                "x": 0,
+                "y": 0,
+                "w": 48,
+                "h": 48
+            },
+            "tags": [
+                "Pro"
+            ],
+            "partype": "",
+            "stats": {
+                "hp": 1000,
+                "hpperlevel": 100
+            }
+        },
+        "Letriodefeu":{
+            "version": "14.4.1",
+            "id": "Letriodefeu",
+            "key": "999",
+            "name": "Le trio de feu",
+            "title": "Les meilleurs",
+            "blurb": "Le trio de feu est composé de trois joueurs d'exception, chacun apportant son propre style de jeu et sa stratégie unique. Ensemble, ils forment une équipe redoutable, capable de rivaliser avec les meilleurs du monde.",
+            "info": {
+                "attack": 10,
+                "defense": 10,
+                "magic": 10,
+                "difficulty": 10
+            },
+            "image": {
+                "full": "Gabriel.png",
+                "sprite": "champion2.png",
+                "group": "champion",
+                "x": 0,
+                "y": 0,
+                "w": 48,
+                "h": 48
+            },
+            "tags": [
+                "Pro"
+            ],
+            "partype": "",
+            "stats": {
+                "hp": 1000,
+                "hpperlevel": 100
+            }
+        },
+
+        
+        
+
         "Milio": {
             "version": "14.4.1",
             "id": "Milio",

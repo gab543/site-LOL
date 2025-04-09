@@ -12,7 +12,7 @@
     ?>
     <input type="search" id="search" class="search-bar" placeholder="Rechercher un champion...">
     <div class="container" id="championContainer">
-        <!-- Les champions seront ajoutés ici -->
+        
     </div>
     <script>
         fetch("../data/champion.json")

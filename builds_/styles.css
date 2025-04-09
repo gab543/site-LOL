@@ -36,11 +36,12 @@ label {
     margin: 5px;
     cursor: pointer;
     border: 1px solid #ccc;
-    background-color: #f0f0f0;
+    border-radius: 5px;
+    background-color: #ffffff;
 }
 
 .filter-btn.active {
-    background-color: #4caf50;
+    background-color: #8d8d8d;
     color: white;
 }
 .item-box {
@@ -58,6 +59,18 @@ label {
     max-width: 100%;
     max-height: 100%;
 }
+.tooltip {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 8px;
+    border-radius: 5px;
+    display: none; /* caché par défaut */
+    pointer-events: none; /* pour que le tooltip ne gêne pas l'interaction */
+    max-width: 200px;
+    word-wrap: break-word;
+    font-size: 14px;
+}
 
 /* Styles pour le fond opaque du modal */
 .modal {
@@ -72,7 +85,7 @@ label {
     z-index: 1000; /* S'assure que le modal est au-dessus des autres éléments */
     }
 
-    .modal-content {
+.modal-content {
     position: relative; /* Position relative pour le contenu */
     margin: auto; /* Centré horizontalement */
     top: 5%; /* Légèrement décalé du haut */

@@ -3,6 +3,8 @@ import { filterItems } from './filters.js';
 document.addEventListener("DOMContentLoaded", () => {
     console.log("Script chargé !");
     const itemBoxes = document.querySelectorAll(".item-box");
+    const tooltip = document.getElementById('tooltip');
+    const items = document.querySelectorAll('.item-list');
     const modal = document.getElementById("modal");
     const modalItemList = document.getElementById("modal-item-list");
     const modalSearch = document.getElementById("modal-search");
@@ -75,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
             itemDiv.classList.add("item");
             itemDiv.dataset.itemId = itemId;
             itemDiv.innerHTML = `
-                <img src="../img/items_images/${itemId}.png" alt="${item.name}">
+                <img src="../img/items_images/${itemId}.png" data-description="${item.description}" alt="${item.name}">
                 <p>${item.name}</p>
             `;
             modalItemList.appendChild(itemDiv);
@@ -103,9 +105,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     Object.entries(itemsData).filter(([_, item]) => {
                         return Array.from(activeFilters).every(stat => {
                             return item.stats && 
-                                   Object.keys(item.stats).some(statName => 
-                                       statName.toLowerCase().includes(stat.toLowerCase())
-                                   );
+                                Object.keys(item.stats).some(statName => 
+                                    statName.toLowerCase().includes(stat.toLowerCase())
+                                );
                         });
                     })
                 );
@@ -185,13 +187,23 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .catch(error => console.error("Erreur récupération des runes :", error));
 
-    // Gestion du clic sur l'image du champion
-    document.querySelectorAll(".champion-card").forEach(card => {
-        card.addEventListener("click", function () {
-            const championName = this.dataset.name;
-            if (championName) {
-                window.location.href = `champion.html?name=${championName}`;
-            }
+        items.forEach(item => {
+            // Ajouter un écouteur d'événements au survol (mouseenter)
+            item.addEventListener('mouseenter', (e) => {
+            const description = e.target.getAttribute('data-description');
+              tooltip.textContent = description;  // Insère la description dans le tooltip
+              tooltip.style.display = 'block';  // Affiche le tooltip
+            });
+        
+            // Ajouter un écouteur pour déplacer le tooltip (mousemove)
+            item.addEventListener('mousemove', (e) => {
+              tooltip.style.left = e.pageX + 10 + 'px';  // Positionner à côté de la souris (10px de marge)
+              tooltip.style.top = e.pageY + 10 + 'px';   // Positionner à côté de la souris (10px de marge)
+            });
+        
+            // Cacher le tooltip quand la souris quitte l'élément (mouseleave)
+            item.addEventListener('mouseleave', () => {
+              tooltip.style.display = 'none';  // Masquer le tooltip
+            });
         });
-    });
 });

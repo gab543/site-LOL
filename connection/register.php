@@ -138,7 +138,7 @@ if(isset($_POST['submit']))
 			<form method="POST" action="<?php echo $_SERVER['PHP_SELF'];?>">
                 <div class="form-group">
 					<label for="first_name">First Name:</label>
-					<input type="text" name="first_name" id="first_name" placeholder="Enter First Name" class="form-control" value="<?php echo $valFirstName??''?>">
+					<input type="text" name="first_name" id="first_name" placeholder="Enter First Name" class="form-control">
                     <script type="text/javascript">
                         var text = document.getElementById('first_name'); // On récupère le texte
                         text.addEventListener('focus', function(e) { // On fait un event pour savoir si il est focus
@@ -149,16 +149,16 @@ if(isset($_POST['submit']))
 				</div>
                 <div class="form-group">
 					<label for="last_name">Last Name:</label>
-					<input type="text" name="last_name" id="last_name" placeholder="Enter Last Name" class="form-control" value="<?php echo $valLastName??''?>">
+					<input type="text" name="last_name" id="last_name" placeholder="Enter Last Name" class="form-control">
 				</div>
 
                 <div class="form-group">
 					<label for="username">Username:</label>
-					<input type="text" name="username" id="username" placeholder="Enter username" class="form-control" value="<?php echo $valusername??''?>">
+					<input type="text" name="username" id="username" placeholder="Enter username" class="form-control">
 				</div>
 				<div class="form-group">
 				<label for="password">Password:</label>
-					<input type="password" name="password" id="password" placeholder="Enter Password" class="form-control" value="<?php echo $valPassword??''?>">
+					<input type="password" name="password" id="password" placeholder="Enter Password" class="form-control">
 				</div>
 
 				<button type="submit" name="submit" class="btn btn-primary">Submit</button>

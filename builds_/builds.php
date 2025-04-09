@@ -65,6 +65,7 @@
             <div class="item-list" id="modal-item-list">
                 <!-- La liste des items sera insérée ici -->
             </div>
+            <div id="tooltip" class="tooltip"></div>
         </div>
     </div>
 
